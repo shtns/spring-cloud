@@ -1,0 +1,16 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: @project.artifactId@
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-cluster-one:7001/eureka,http://eureka-cluster-two:7002/eureka
+  instance:
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: ${eureka.instance.lease-renewal-interval-in-seconds}

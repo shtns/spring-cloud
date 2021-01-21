@@ -1,0 +1,33 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: @project.artifactId@
+  cloud:
+    config:
+      label: master #分支名称
+      name: application #配置文件名称
+      profile: test #读取后缀名称
+      uri: http://localhost:3344 #配置中心地址
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: admin
+    password: ${spring.rabbitmq.username}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-cluster-one:7001/eureka,http://eureka-cluster-two:7002/eureka
+  instance:
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: ${eureka.instance.lease-renewal-interval-in-seconds}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

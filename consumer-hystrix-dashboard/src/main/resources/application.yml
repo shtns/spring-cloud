@@ -1,0 +1,5 @@
+server:
+  port: 8899
+
+#127.0.0.1:9001/hystrix
+#127.0.0.1:80/hystrix.stream

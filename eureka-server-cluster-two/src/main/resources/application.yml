@@ -1,0 +1,14 @@
+server:
+  port: 7002
+
+eureka:
+  instance:
+    hostname: eureka-cluster-two
+  client:
+    register-with-eureka: false
+    fetch-registry: ${eureka.client.register-with-eureka}
+    service-url:
+      defaultZone: http://eureka-cluster-one:7001/eureka
+  server:
+    enable-self-preservation: ${eureka.client.register-with-eureka}
+    eviction-interval-timer-in-ms: 5000

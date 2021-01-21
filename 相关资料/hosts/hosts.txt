@@ -1,0 +1,4 @@
+127.0.0.1 eureka-cluster-one
+127.0.0.1 eureka-cluster-two
+115.159.0.240 zipkin
+115.159.0.240 mysql
